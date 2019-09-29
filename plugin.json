@@ -1,0 +1,28 @@
+{
+      "id": "techbot",
+      "version": "1.0.0",
+      "name": "techbuzz plugin",
+      "description": "",
+      "server": {
+        "executable": "server/plugin.exe"
+      },
+     "settings_schema": {
+        "settings": [
+            {
+                "key": "TechBuzzChannel",
+                "display_name": "TechBuzz Channel ID",
+                "type": "text"
+            },
+            {
+                "key": "ApiKey",
+                "display_name": "Api Key",
+                "type": "text"
+            },
+            {
+                "key": "AskJtgChannel",
+                "display_name": "AskJtg ChannelID",
+                "type": "text"
+            }
+        ]
+    }
+}

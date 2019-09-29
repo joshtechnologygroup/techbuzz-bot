@@ -1,0 +1,10 @@
+package: github.com/Brightscout/mattermost-plugin-boilerplate/server
+import:
+- package: github.com/mattermost/mattermost-server
+  version: ~5.14.0
+  subpackages:
+  - plugin
+- package: mvdan.cc/xurls
+  version: v2.1.0
+  subpackages:
+  - cmd/xurls
