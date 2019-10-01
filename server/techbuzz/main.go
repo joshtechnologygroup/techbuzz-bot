@@ -3,6 +3,7 @@ package techbuzz
 import (
 	"encoding/json"
 	"github.com/thoas/go-funk"
+	"strings"
 
 	"github.com/standup-raven/standup-raven/server/logger"
 	"github.com/standup-raven/standup-raven/server/util"
@@ -154,7 +155,7 @@ func GetData(tag string) []string {
 }
 
 func InsertData(tag string, text string) error {
-	techData := GetData(tag)
+	techData := GetData(strings.ToLower(tag))
 	techData = append(techData, text)
 	serilizedData, err := json.Marshal(techData)
 	if err != nil {
@@ -162,7 +163,7 @@ func InsertData(tag string, text string) error {
 		return err
 	}
 
-	if err := config.Mattermost.KVSet(util.GetKeyHash(config.TechData+"_"+tag), serilizedData); err != nil {
+	if err := config.Mattermost.KVSet(util.GetKeyHash(config.TechData+"_"+strings.ToLower(tag)), serilizedData); err != nil {
 		return err
 	}
 	return nil

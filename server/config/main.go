@@ -12,8 +12,8 @@ import (
 const (
 	CommandPrefix       = "techbot"
 	TechMembers         = "tech_members1"
-	UserConfig          = "user1_config1"
-	TechData            = "tech_data"
+	UserConfig          = "user1_config"
+	TechData            = "tech_data1"
 	TechQuestions       = "tech_question1"
 	URLMappingKeyPrefix = "url_"
 	BotUsername         = "techbot"

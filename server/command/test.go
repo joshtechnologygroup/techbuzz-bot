@@ -23,9 +23,9 @@ func validatedata(args []string, context Context) (*model.CommandResponse, *mode
 }
 
 func insertData(args []string, context Context) (*model.CommandResponse, *model.AppError) {
-	techbuzz.InsertData("python", args[0])
+	techbuzz.InsertData(args[0], args[1])
 	return &model.CommandResponse{
 		Type: model.COMMAND_RESPONSE_TYPE_EPHEMERAL,
-		Text: "hello",
+		Text: "-",
 	}, nil
 }
