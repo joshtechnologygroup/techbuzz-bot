@@ -31,15 +31,20 @@ func sentAnswerToUser(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 	defer r.Body.Close()
-	var feedback map[string]interface{}
+	type Feedback struct {
+		State string 			  `json:"state"`
+		UserID string 			  `json:"user_id"`
+		Submission map[string]interface{} `json:"submission"`
+	}
+	var feedback Feedback
 	if err = json.Unmarshal(b, &feedback); err != nil {
 		config.Mattermost.LogError("Unable to unmarshal response.", "Error", err.Error())
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	questionText := feedback["state"].(string)
-	responseBy := feedback["user_id"].(string)
-	answer := feedback["submission"].(map[string]interface{})["Answer"].(string)
+	questionText := feedback.State
+	responseBy := feedback.UserID
+	answer := feedback.Submission["Answer"].(string)
 	user,_ := config.Mattermost.GetUser(responseBy)
 	channel, _ := config.Mattermost.GetDirectChannel(config.GetConfig().BotUserID, userID)
 	post := &model.Post{
