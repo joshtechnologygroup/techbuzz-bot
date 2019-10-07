@@ -41,7 +41,7 @@ func unsubscribe(args []string, context Context) (*model.CommandResponse, *model
 	userID := context.CommandArgs.UserId
 	if len(args) == 0 {
 		userConfig := techbuzz.GetUserConfig(userID)
-		userConfig.Enabled =false
+		userConfig.Enabled = false
 
 		techbuzz.SaveConfig(userID, userConfig)
 		techbuzz.Unsubscribe(userID, techbuzz.TechList)
@@ -51,7 +51,7 @@ func unsubscribe(args []string, context Context) (*model.CommandResponse, *model
 		}, nil
 	}
 
-	var tt,te string
+	var tt, te string
 	tags := context.Props["tags"].([]string)
 	tagsNotFound := context.Props["tagsNotFound"].([]string)
 	techbuzz.Unsubscribe(userID, tags)
@@ -66,7 +66,7 @@ func unsubscribe(args []string, context Context) (*model.CommandResponse, *model
 	}
 	if len(tags) != 0 {
 		tt = "Successfully unsubscribed to post having tags:"
-		tt= tt + te + "\n"
+		tt = tt + te + "\n"
 	}
 
 	tt = tt + "Invalid tags :"

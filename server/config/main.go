@@ -1,9 +1,10 @@
 package config
 
 import (
-	"github.com/pkg/errors"
 	"strings"
 	"time"
+
+	"github.com/pkg/errors"
 
 	"github.com/mattermost/mattermost-server/plugin"
 	"go.uber.org/atomic"
@@ -32,11 +33,11 @@ var (
 )
 
 type Configuration struct {
-	SiteURL   string `json:"SiteURL"`
-	BotUserID string `json:"botUserId"`
-	Apikey    string `json:"Apikey"`
+	SiteURL         string `json:"SiteURL"`
+	BotUserID       string `json:"botUserId"`
+	Apikey          string `json:"Apikey"`
 	TechBuzzChannel string `json:"TechBuzzChannel"`
-	AskJtgChannel string `json:"AskJtgChannel"`
+	AskJtgChannel   string `json:"AskJtgChannel"`
 }
 
 func GetConfig() *Configuration {

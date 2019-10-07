@@ -41,12 +41,12 @@ func saveConfig(args []string, context Context) (*model.CommandResponse, *model.
 	userID := context.CommandArgs.UserId
 	if len(args) == 0 {
 		techbuzz.SaveUserConfig(userID, techbuzz.TechList)
-			return &model.CommandResponse{
+		return &model.CommandResponse{
 			Type: model.COMMAND_RESPONSE_TYPE_EPHEMERAL,
 			Text: "Successfully subscribed all tech post",
 		}, nil
 	}
-	var tt,te string
+	var tt, te string
 	tags := context.Props["tags"].([]string)
 	tagsNotFound := context.Props["tagsNotFound"].([]string)
 	techbuzz.SaveUserConfig(userID, tags)
@@ -61,7 +61,7 @@ func saveConfig(args []string, context Context) (*model.CommandResponse, *model.
 	}
 	if len(tags) != 0 {
 		tt = "Successfully subscribed to post having tags:"
-		tt= tt + te + "\n"
+		tt = tt + te + "\n"
 	}
 
 	tt = tt + "Invalid tags :"

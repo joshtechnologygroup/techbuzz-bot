@@ -19,19 +19,19 @@ func SendPost() {
 			var newTags = make(map[string]Tag)
 			for key, value := range userConfig.Tags {
 				if value.Enabled == true {
-					if sendTechPost(key,userID,value.SequenceNumber) {
+					if sendTechPost(key, userID, value.SequenceNumber) {
 						value.SequenceNumber++
 					}
 				}
-				newTags[key]=value
+				newTags[key] = value
 			}
-			userConfig.Tags= newTags
+			userConfig.Tags = newTags
 			SaveConfig(userID, userConfig)
 		}
 	}
 }
 
-func sendTechPost(tag ,userID string, sequenceNumber int) bool {
+func sendTechPost(tag, userID string, sequenceNumber int) bool {
 	techData := GetData(tag)
 	if len(techData) <= sequenceNumber {
 		return false
