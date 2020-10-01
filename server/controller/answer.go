@@ -40,7 +40,7 @@ func sentAnswerToUser(w http.ResponseWriter, r *http.Request) {
 	questionText := feedback["state"].(string)
 	responseBy := feedback["user_id"].(string)
 	answer := feedback["submission"].(map[string]interface{})["Answer"].(string)
-	user,_ := config.Mattermost.GetUser(responseBy)
+	user, _ := config.Mattermost.GetUser(responseBy)
 	channel, _ := config.Mattermost.GetDirectChannel(config.GetConfig().BotUserID, userID)
 	post := &model.Post{
 		ChannelId: channel.Id,
@@ -65,7 +65,7 @@ func sentAnswerToUser(w http.ResponseWriter, r *http.Request) {
 		},
 	})
 	config.Mattermost.CreatePost(post1)
-	channelDM, _:= config.Mattermost.GetDirectChannel(config.GetConfig().BotUserID, responseBy)
+	channelDM, _ := config.Mattermost.GetDirectChannel(config.GetConfig().BotUserID, responseBy)
 	config.Mattermost.SendEphemeralPost(responseBy, &model.Post{
 		ChannelId: channelDM.Id,
 		Message:   " Keeping knowledge erodes power. Sharing is the fuel to your growth engine :wink:.",

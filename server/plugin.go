@@ -12,10 +12,10 @@ import (
 	"github.com/techbot/server/techbuzz"
 	"github.com/techbot/server/util"
 
+	algorithmia "github.com/algorithmiaio/algorithmia-go"
 	"github.com/mattermost/mattermost-server/model"
 	"github.com/mattermost/mattermost-server/plugin"
 	"mvdan.cc/xurls"
-	algorithmia "github.com/algorithmiaio/algorithmia-go"
 )
 
 type Plugin struct {
@@ -194,9 +194,9 @@ func (p *Plugin) MessageHasBeenPosted(c *plugin.Context, post *model.Post) {
 			for val, _ := range response.Result.(map[string]interface{}) {
 				if techbuzz.TechTag[strings.ToLower(val)] {
 					//frequency := int (fre.(float64))
-					techbuzz.InsertData(strings.ToLower(val),post.Message)
+					techbuzz.InsertData(strings.ToLower(val), post.Message)
 					fmt.Println("From Api", val)
-					flag =true
+					flag = true
 				}
 			}
 			if flag {
@@ -205,15 +205,15 @@ func (p *Plugin) MessageHasBeenPosted(c *plugin.Context, post *model.Post) {
 		}
 		if flag == false {
 			for val, _ := range techbuzz.TechTag {
-				if strings.Contains(strings.ToLower(URL),val) {
-					techbuzz.InsertData(strings.ToLower(val),post.Message)
+				if strings.Contains(strings.ToLower(URL), val) {
+					techbuzz.InsertData(strings.ToLower(val), post.Message)
 					fmt.Println("From tag search", val)
 					break
 				}
 			}
 		} else {
 			fmt.Println("Insertin in other tag:")
-			techbuzz.InsertData("other",post.Message)
+			techbuzz.InsertData("other", post.Message)
 		}
 	}
 }

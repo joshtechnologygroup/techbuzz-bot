@@ -2,8 +2,9 @@ package techbuzz
 
 import (
 	"encoding/json"
-	"github.com/thoas/go-funk"
 	"strings"
+
+	"github.com/thoas/go-funk"
 
 	"github.com/standup-raven/standup-raven/server/logger"
 	"github.com/standup-raven/standup-raven/server/util"
@@ -19,7 +20,7 @@ var TechTag = map[string]bool{
 	"other":      true,
 }
 
-var TechList = []string {
+var TechList = []string{
 	"python",
 	"javascript",
 	"java",
